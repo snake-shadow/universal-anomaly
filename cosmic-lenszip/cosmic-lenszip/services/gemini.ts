@@ -7,7 +7,7 @@ const STORAGE_KEY = 'gemini_api_key_override';
 // 1. Check Environment Variable (Build time)
 // 2. Check Local Storage (Runtime override)
 const getApiKey = (): string | null => {
-  const envKey = process.env.API_KEY;
+  const envKey = import.meta.env.VITE_GEMINI_API_KEY as string | undefined;
   if (envKey && envKey !== "undefined" && envKey !== "") return envKey;
   
   const localKey = localStorage.getItem(STORAGE_KEY);
